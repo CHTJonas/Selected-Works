@@ -1,0 +1,229 @@
+\documentclass[12pt]{article}
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath}
+\usepackage{graphicx}
+\usepackage{hyperref}
+\usepackage[separate-uncertainty = true]{siunitx}
+\usepackage{float}
+
+\title{Mechanical resonance}
+\author{Charlie Jonas\\Fitzwilliam College\\CRSid: chtj2}
+\date{April 19, 2016}
+
+\begin{document}
+
+\maketitle
+
+\begin{abstract}
+A torsion pendulum was set up and its natural frequency was measured to be $\SI{3.305 \pm 0.007}{\radian\per\second}$. In both an undamped and damped case, the decay of free oscillations was investigated and the quality factors determined as $\SI{103.3 \pm 4.1}{}$ and $\SI{6.04 \pm 0.20}{}$ respectively. The behaviour under forced oscillation was then analysed and the data obtained used to experimentally verify the mathematical relationships for simple harmonic motion that can be derived from Newton's laws. The predictions confirmed experimentally were namely; that resonance occurs at or very close to the natural frequency, that increasing damping decreases the amplitude at resonance and that the amplitude tends towards a positive number at low angular frequencies \& towards zero at very large ones.
+\end{abstract}
+
+\section{Introduction}
+The aims of this experiment were to study the effects that damping and forcing have on a system that is executing simple harmonic motion. The insight gained by doing this can be used to experimentally verify the mathematical relationships that can be derived from Newton's Laws of Motion and subsequently used to calculate quantitative data that can be used to describe the system and to compare it to others in a likewise fashion. In this experiment we are interested in determining the (angular) frequencies and amplitudes of oscillation and, in particular, the quality factor of the system under a particular set up.
+
+Fundamentally, any system in which a displacement from some equilibrium point creates a restoring force that is linearly proportional to that displacement will perform simple harmonic motion when released. Such systems can range from a simplified laboratory model of a mass on a spring to a complex model such as the springs and shock absorbers in a car's suspension. If the only force present is the restoring force then the system is said to be undamped and not forced; it will resonate at a fixed frequency ad infinitum. If there is some frictional or resistive force that opposes the direction of motion and is proportional to the rate of change of the displacement then the system is termed damped; the amplitude of the oscillations will decay exponentially whilst the frequency will vary depending on whether the system is under, over or critically damped. In the case in which there is an additional driving force that is causing the particle to move in some predetermined way then the system is said to be forced.
+
+There are a variety of experimental setups which could be used for our purposes; simple harmonic motion is performed by a mass on a spring, a buoyant floating object, certain types of electrical circuits and by a range of different types of pendula. We chose to adopt the latter setup, specifically that of a torsion pendulum; the pendulum rotates against a fixed dial such that the amplitude can be measured much more easily than in the case of a simple or rigid pendulum, whilst still obeying Hooke's law \cite{torsion}. The driving couple was provided by a small electric motor connected to a drive arm.
+
+The background to the theory is detailed in the next section. Section 3 contains a statement on the experimental method whilst the results themselves can be found in section 4. A discussion of these is in section 5 and the overall conclusion, section 6.
+
+\section{Theoretical Background}
+There are three cases that will need to be examined mathematically in our experiment. The equation of motion for an undamped, undriven, torsional oscillator can be derived from Newton's Second Law and is given as
+\begin{equation}
+I\ddot{\theta}=-\tau\theta
+\end{equation}
+where $I$ is the moment of inertia of the oscillator, $\theta$ is the angular displacement from equilibrium and $\tau$ is the torsion constant \cite{labmanual}. A solution to this equation is
+\begin{equation}
+\theta=\theta_0\cos{\omega_0t}
+\end{equation}
+where $\omega_0=\sqrt{\tau/I}$ is the natural frequency of oscillation and $\theta_0$ is a constant relating to the angle from which the oscillator is released at time $t=0$, assuming it is released from rest.
+
+Under damping the equation of motion becomes
+\begin{equation}
+I\ddot{\theta}=-\tau\theta-b\dot{\theta}
+\end{equation}
+where $b$ is a constant. This is typically written in general form
+\begin{equation}
+\ddot{\theta}+2\gamma\dot{\theta}+\omega_0^2\theta=0
+\end{equation}
+where $2\gamma=b/I$ is called the decay constant and is a measure of the damping in the system and $\omega_0=\sqrt{\tau/I}$ is the natural frequency of undamped oscillations. The value of the damping coefficient $b$ compared with $I$ and $\tau$ leads to one of three distinct solutions, namely underdamping, critical damping and overdamping. In our experiment we look mainly at the underdamped case which has a solution of the form
+\begin{equation}
+\theta=\theta_0e^{-\gamma t}\cos{t\sqrt{\omega_0^2-\gamma^2}}.
+\label{underdampedSolution}
+\end{equation}
+A good-quality oscillator will decay much more slowly compared to its period of oscillation; the quality factor
+\begin{equation}
+Q=\frac{\omega_0}{2\gamma}
+\label{qualityFactor}
+\end{equation}
+is introduced as a measure of this. Good-quality oscillators have $Q>>1$.
+
+A damped oscillator that is being driven by a sinusoidal force can be described by
+\begin{equation}
+I\ddot{\theta}=-\tau\theta-b\dot{\theta}+A\cos{\omega t}
+\end{equation}
+which has general form
+\begin{equation}
+\ddot{\theta}+2\gamma\dot{\theta}+\omega_0^2\theta=\frac{A}{I}\cos{\omega t}.
+\end{equation}
+The solution to this is
+\begin{equation}
+\theta(\omega)=X(\omega)\cos\left(\omega t-\phi(\omega)\right)
+\end{equation}
+where the amplitude is given by
+\begin{equation}
+X(\omega)=\frac{A/I}{\sqrt{\left(\omega_0^2-\omega^2\right)^2+\left(2\gamma\omega\right)^2}},
+\label{drivenAmplitude}
+\end{equation}
+the phase difference by
+\begin{equation}
+\tan\phi(\omega)=\frac{2\gamma\omega}{\omega_0^2-\omega^2}
+\end{equation}
+and where we have written $X(\omega)$ \& $\phi(\omega)$ as functions of the frequency of the driving couple to remind ourselves that they are dependent variables. If we differentiate the amplitude with respect to the driving couple frequency we obtain
+\begin{equation}
+\frac{dX(\omega)}{d\omega}=\frac{2\omega\left(-\omega_0^2+2\gamma^2+\omega^2\right)}{\sqrt{\omega_0^4-2\omega_0^2\omega^2+4\gamma^2\omega^2+\omega^4}}
+\end{equation}
+which can be used to find the frequency that maximises the amplitude
+\begin{equation}
+\omega_\text{max}^2=\omega_0^2-2\gamma^2
+\end{equation}
+and the amplitude at that maximum
+\begin{equation}
+X(\omega_\text{max})=\frac{A/I}{2\gamma\sqrt{\omega_0^2-\gamma^2}}.
+\label{maxAmplitude}
+\end{equation}
+This shows that the maximum amplitude of oscillation, termed resonance, occurs at or very near to the natural frequency of the system (since we specified the system was underdamped and hence the decay constant is small. It also shows that decreasing the damping should produce greater amplitude oscillations at that resonant frequency.
+\label{dampingEffectOnGraph}
+
+From equation \ref{drivenAmplitude} we can derive the following
+\begin{equation}
+\lim_{\omega \to \infty}X(\omega)=0
+\label{amplitudeInfinity}
+\end{equation}
+\begin{equation}
+\lim_{\omega \to 0}X(\omega)=\frac{A/I}{\omega_0^2}
+\label{amplitudeZero}
+\end{equation}
+and, assuming the damping is light,
+\begin{equation}
+X(\omega_\text{max})=\frac{A/I}{2\gamma\omega_0} \qquad \gamma<<\omega_0
+\end{equation}
+from equation \ref{maxAmplitude}. This shows us that
+\begin{equation}
+Q=\frac{\omega_0}{2\gamma}=\frac{X(\omega_\text{max})}{X(0)}.
+\label{MAXqualityFactor}
+\end{equation}
+These equations will be useful to us in testing the data against theory.
+
+\section{Method}
+\subsection{Setting up the apparatus}
+The pendulum consists of a bronze disc connected to a coiled spring and housed inside an annulus (Figure \ref{pendulumDiagram}) with an attached scale for measuring displacement. The pendulum can be driven via a connecting arm attached to a motor whose speed can be continuously varied. There will be a minimal amount of damping provided by the resistance at the bearing about which the pendulum rotates however the vast majority of the damping force is provided by the eddy break; two coils of wires set up a magnetic field that passes orthogonally through the disc and creates an opposing force due to Lenz's Law \cite{feynman}. The current for the eddy break and the motor is provided by a dual power supply.
+\begin{figure}[ht]
+    \centering
+    \includegraphics[width=0.6\textwidth]{PendulumDiagram.png}
+    \caption{The torsion pendulum. The restoring force is provided by the coiled spring whose couple is linearly proportional to the angular displacement of the pendulum. During setup the drive wheel was rotated so that the pendulum had an equilibrium position reading of zero and the position of the arm joint was checked.}
+    \label{pendulumDiagram}
+\end{figure}
+
+Before beginning to collect data we ensured that the pendulum was free to rotate about its axis and that the arm joint was positioned at the highest point possible on the drive arm, secured tightly as any movement of the joint could invalidate data collected up to that point. The drive wheel was rotated until the displacement pointer lined up with the centre zero mark on the scale ring so that any systematic zero error would be eliminated. In addition the power supply, being a dual supply, was checked to ensure that both outputs were operating independently and that they were not `linked'.
+
+\subsection{Measurement of the transient response}
+\subsubsection{Measurement of the natural frequency}
+With no current in the eddy break, the time taken for the pendulum to perform ten oscillations was measured using a stopwatch. Since the error in starting and stopping the stopwatch is likely to be a significant fraction of a second, we repeated this measurement four times and obtained an average value for the angular frequency and an associated error. Since the only damping present would be due to friction and resistances to motion the overall damping is very low and so this angular frequency is assumed to be equal to the natural frequency of the pendulum.
+
+\subsubsection{Measurement of the quality factor in the damped and undamped case}
+The decay of successive oscillations was investigated by releasing the pendulum from a displacement reading of ten on the scale and measuring the amplitude after each successive oscillation. This was first done with no current in the eddy break and then with a current of \SI{0.6}{\ampere} as measured by the display on the power supply.
+
+Equation \ref{underdampedSolution} suggests that the amplitude will decay with an exponential envelope according to
+\begin{equation}
+a_n=a_0e^{-n\gamma T}
+\label{exponentialEnvelope}
+\end{equation}
+where $a_n$ is the amplitude after n successive oscillations. The data obtained were therefore used to plot a graph of the natural logarithm of this amplitude against the number of successive oscillations in order that the gradient be used to determine the value of $-\gamma T=-\gamma(2\pi/\omega_1)$. Assuming low damping $\omega_1\approx\omega_0$, equation \ref{qualityFactor} tells us that the gradient will be $\nabla\approx-\pi/Q$.
+
+In both cases we used linear regression analysis in order to determine the gradient of the graph and hence obtain an estimate for the quality factor and its error. In order to test our assumption that the system was lightly damped we increased the damping current to its maximum possible permissible value of \SI{2}{\ampere} and observed the motion of the pendulum; we found that at this value the pendulum was verging on being critically damped and on decreasing the damping current found that the system returned to typical underdamped behaviour, hence our assumption that $\omega_1\approx\omega_0$ was valid.
+
+\subsection{Measurement of the quality factor under forced oscillations}
+A stopwatch was again used to measure the period, this time of the driving couple, and hence to calculate the angular frequency. Depending on a visual estimate of the motor speed, the number of oscillations measured was varied; for slow speeds timing only two oscillations was necessary as the period was sufficiently large however for faster speeds it became necessary to time up to twenty five oscillations as the error in starting and stopping the stopwatch became significant compared to the now shorter period. These timing measurements were made whilst waiting for the transient response of the pendulum to die down until only the forced response remained. This allowed us to proceed to the next step of measuring the amplitude without fear that the system was still in transient motion.
+
+As the motor speed was varied and hence the angular frequency of the driving couple, the amplitude of the pendulum was recorded by taking a reading on the left and right side of the scale and averaging the two. The damping current used initially was \SI{0.3}{\ampere} and the experiment was then repeated with a higher current of \SI{0.6}{\ampere}. Equation \ref{MAXqualityFactor} was used to estimate the quality factor and its error. The measurement for the amplitude with a driving couple angular frequency of zero was obtained by rotating the drive wheel slowly by hand and recording the maximum displacements of the pendulum to the left and the right and averaging the two readings.
+
+\section{Results}
+A summary of the data collected is provided by the graphs in figures \ref{transientGraph}, \ref{transientLogGraph} \& \ref{forcedGraph} whilst summaries of measured and estimated quantities are provided by tables \ref{measurementTable} \& \ref{estimateTable} respectively.
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.9\textwidth]{Transient.png}
+    \caption{Amplitude of free oscillations plotted as a function of number of oscillations.}
+    \label{transientGraph}
+\end{figure}
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.9\textwidth]{TransientLog.png}
+    \caption{Natural logarithm of amplitude of free oscillations plotted as a function of the number of oscillations.}
+    \label{transientLogGraph}
+\end{figure}
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.9\textwidth]{Forced.png}
+    \caption{Amplitude of forced oscillation as a function of angular frequency.}
+    \label{forcedGraph}
+\end{figure}
+\begin{table}[H]
+    \centering
+    \begin{tabular}{| p{2cm} | p{4cm} | p{4cm} | p{4cm} |}
+    \hline
+    Quantity & Measurement & Error & 1/fractional error \\ \hline
+    $T_0$ & $\SI{1.901}{\second}$ & $\SI{0.004}{\second}$ & $\sim\SI{500}{\per\second}$ \\ \hline
+    $\omega_0$ & $\SI{3.305}{\radian\per\second}$ & $\SI{0.007}{\radian\per\second}$ & $\sim\SI{500}{\second\per\radian}$ \\ \hline
+    $Q_{\SI{0}{\ampere}}$ & $\SI{103.3}{}$ & $\SI{4.1}{}$ & $\sim\SI{25}{}$ \\ \hline
+    $Q_{\SI{0.6}{\ampere}}$ & $\SI{6.04}{}$ & $\SI{0.20}{}$ & $\sim\SI{30}{}$ \\ \hline
+    $a_{\omega=0}$ & $\SI{0.7}{\text{arbitrary units}}$ & $\SI{0.1}{\text{arbitrary units}}$ & $\sim\SI{7}{\per\text{arbitrary unit}}$ \\ \hline
+    \end{tabular}
+    \caption{Summary of measurements with errors.}
+    \label{measurementTable}
+\end{table}
+\begin{table}[H]
+    \centering
+    \begin{tabular}{| p{2cm} | p{4cm} | p{4cm} | p{4cm} |}
+    \hline
+    Quantity & Estimate & Error & 1/fractional error \\ \hline
+    $\omega_{\text{max},\SI{0.3}{\ampere}}$ & $\SI{3.32}{\radian\per\second}$ & $\SI{0.03}{\radian\per\second}$ & $\sim\SI{110}{\second\per\radian}$ \\ \hline
+    $a_{\SI{0.3}{\ampere}}$ & $\SI{13.1}{\text{arbitrary units}}$ & $\SI{0.2}{\text{arbitrary units}}$ & $\sim\SI{65}{\per\text{arbitrary unit}}$ \\ \hline
+    $\omega_{\text{max},\SI{0.6}{\ampere}}$ & $\SI{3.32}{\radian\per\second}$ & $\SI{0.03}{\radian\per\second}$ & $\sim\SI{110}{\second\per\radian}$ \\ \hline
+    $a_{\SI{0.6}{\ampere}}$ & $\SI{4.0}{\text{arbitrary units}}$ & $\SI{0.2}{\text{arbitrary units}}$ & $\sim\SI{20}{\per\text{arbitrary unit}}$ \\ \hline
+    $Q_{\SI{0.3}{\ampere}}$ & $\SI{18.71}{}$ & $\SI{6.30}{}$ & $\sim\SI{3}{}$ \\ \hline
+    $Q_{\SI{0.6}{\ampere}}$ & $\SI{5.71}{}$ & $\SI{0.90}{}$ & $\sim\SI{6}{}$ \\ \hline
+    \end{tabular}
+    \caption{Summary of estimates with errors.}
+    \label{estimateTable}
+\end{table}
+
+\section{Discussion}
+\subsection{Analysis of graphs}
+Figure \ref{transientGraph} shows that with a breaking current of \SI{0.6}{\ampere} the amplitude of successive oscillations decays with what appears to be an exponential curve; the log-plot in figure \ref{transientLogGraph} shows the data conform to a linear trendline, confirming the theory suggested by equations \ref{exponentialEnvelope} and \ref{underdampedSolution}. Figure \ref{transientGraph} also shows that with no current in the eddy break the amplitude still decays (mainly due to the internal friction) however this is much weaker in comparison. The final point in figure \ref{transientLogGraph} has been excluded from any regression or trendline calculations since here the amplitude is decaying to zero and so it became very difficult to accurately measure the amplitude of oscillation as the pendulum was oscillating with an amplitude less than the smallest division on the scale. The greatly increased error bars also indicate this; the negative error bar cannot be directly calculated however to intents and purposes it extends downwards towards negative infinity on the y-axis.
+
+Both response curves in figure \ref{forcedGraph} are as expected by theory; they both tend towards a positive number as the angular frequency tends towards zero (equation \ref{amplitudeZero}) and tend towards zero as the angular frequency tends towards infinity (equation \ref{amplitudeInfinity}). The more highly damped system shows a shallower broader peak compared to the narrow sharp peak of the more lightly damped system. This is as previously discussed in section \ref{dampingEffectOnGraph} and is as predicted by equation \ref{maxAmplitude}.
+
+\subsection{Measured values}
+Our regression analysis indicated that the gradients of the linear trendlines in figure \ref{transientLogGraph} were \SI{-0.0304 \pm 0.0012}{} and \SI{-0.520 \pm 0.017}{} (no units) which yield quality factors of \SI{103.3 \pm 4.1}{} and \SI{6.04 \pm 0.20} respectively (also no units). Physically, this is as we expect since the higher current provides a greater degree of damping which acts to increase the period of oscillation and simultaneously decrease the time taken to decay by an (arbitrary) factor of $1/e$ (see equation \ref{underdampedSolution}). This means that the quality factor will decrease since now the ratio of the decay time and the period of oscillation has decreased. This can be understood physically as the oscillator resonating for a much shorter period.
+
+Analysis of figure \ref{forcedGraph} allowed us to estimate values for the resonant angular frequency and resonant amplitude. Comparing the values of $Q_{\SI{0.6}{\ampere}}$ in table \ref{estimateTable} to \ref{measurementTable} shows us that the more accurate value calculated earlier is within the error bounds of the estimate under the driven system. 
+
+\subsection{Errors}
+In addition to the errors already discussed, there were several other possible sources of error that were considered and which we attempted to mitigate. The systematic error in the measurement of time was evaluated and deemed insignificant enough to be unlikely to affect the results. Since the stopwatch is quartz-crystal controlled it will have an error of a few seconds a day at most, approximately a few parts in $10^5$ or better. The scale ring might vary in dimensions with changing temperature however it is likely to have been calibrated for room temperature and so any slight deviation from this in the lab by a degree Celsius or two would not produce an error more than a few parts in $10^5$. Again this systematic error can be ignored.
+
+A much more relevant systematic error regarding measuring the amplitude became apparent during the course of the experiment; taking readings whilst the pendulum is oscillating became increasingly difficult as the driving couple frequency was increased and also if the amplitude of oscillations was very small. The increasing error in these measurements of amplitude is evident as the size of the error bars in figure \ref{transientLogGraph} increases. These increasing error lead to inaccuracies in the gradient of the graph and hence the measured values for the quality factor. Unfortunately with our experimental setup this was not something we could eradicate entirely; however, we did our best to minimise it as already discussed by taking readings on both sides of the measurement ring and averaging the two.
+
+\subsection{Improvements to the experiment}
+An improvement to the experiment would have to focus on minimising the error in measurements using the scale ring. This could be achieved by making the whole experiment larger so that the error become less significant at the larger displacements and by reducing the natural frequency of the pendulum so that it oscillates more slowly.
+
+\section{Conclusion}
+A torsion pendulum was setup and its natural frequency of oscillation measured using a simple stopwatch. The quality factor of the pendulum was measured or estimated in four separate circumstances, requiring reference to the numerical value of pi as well as the measurement of the amplitude of successive free oscillations, the amplitude of successive forced oscillations and angular frequency of the driving couple.
+
+The data obtained gave a natural frequency of $\omega_0 = \SI{3.305 \pm 0.007}{\radian\per\second}$ and quality factors of $Q_{\SI{0}{\ampere}} = \SI{103.3 \pm 4.1}{}$ \& $Q_{\SI{0.6}{\ampere}} = \SI{6.04 \pm 0.20}{}$ under free oscillation and $Q_{\SI{0.3}{\ampere}} = \SI{18.71 \pm 6.3}{}$ \& $Q_{\SI{0.6}{\ampere}} = \SI{5.71 \pm 0.9}{}$ under forced oscillation. All values obtained and the trends they gave rise to were consistent with theory.
+
+
+\bibliographystyle{abbrv}
+\bibliography{references}
+
+\end{document}

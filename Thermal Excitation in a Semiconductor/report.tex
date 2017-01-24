@@ -1,0 +1,54 @@
+\documentclass[12pt]{article}
+
+\usepackage[margin=0.5in]{geometry}
+\usepackage{amsmath}
+\usepackage{graphicx}
+\usepackage[hidelinks=true]{hyperref}
+\usepackage[separate-uncertainty = true]{siunitx}
+
+\title{Thermal excitation in a semiconductor}
+\author{Charlie Jonas\\Fitzwilliam College\\CRSid: chtj2}
+\date{January 3, 2016}
+
+\begin{document}
+
+\maketitle
+
+\begin{abstract}
+A thermistor was heated and then allowed to cool whilst its resistance was measure by comparison to a standard resistance in series. The temperature was measured using a thermocouple formed of chromel (90\% Ni and 10\%Cr) and constantan (60\% Cu and 40\% Ni). The data obtained were used to test the relationship between the electrical resistance of the semiconductor and its absolute temperature, and to calculate the gap energy. The value obtained was \SI{1.058 \pm 0.010}{\electronvolt}.
+\end{abstract}
+
+\section{Introduction}
+The aims of the experiment were to study the variation of the resistance of a small sample of silicon with respect to temperature, testing the non-classical theory that it is proportional to the natural exponent of the reciprocal of the temperature, and to calculate the gap energy between the valence and conductance bands of the sample.
+
+Previous work measuring the gap energy of a semiconductor has used the ultra-violet absorption spectrum of the sample, from which the gap energy can then be deduced. The complication of this method is the requirement of a spectrometer and so for simplicity, the method adopted here is that of measuring the resistance of the semiconductor whilst varying temperature. The non-classical model predicts that the resistance of an intrinsic semiconductor is dependant on its absolute temperature (which shall be measured), the Boltzmann constant and its gap energy. The advantage of this method is that it can also be used to test the theory and provide experimental evidence that wither supports or contradicts it.
+
+A discussion of the results of the experiment can be found in the next section whilst the overall conclusion can be found in section 3.
+
+\section{Discussion}
+
+\subsection{Variation of resistance with respect to temperature}
+As show in the ``Graph of the natural logarithm of R against 1/T'' the data appear to be consistent with the theory that semiconductor conductivity increases with temperature and that the specific relationship between the electrical resistance and absolute temperature is of the form given in equations E3.1 and E3.2 in the laboratory manual \cite{labmanual}.
+
+\subsection{Measured value of gap energy}
+As shown in the ``SUMMARY OUTPUT'' data regression table, the calculated value of the gradient of the graph is \SI{6.136e3}{\kelvin}. This is the value of $ T_0 $ in equation E3.2 in \cite{labmanual}, leading to a gap energy value of $ \SI{1.695e-19}{\joule} = \SI{1.058}{\electronvolt} $. Since the gap energy is related to this constant in direct proportions, the fractional error associated with the gradient will be the same as the fractional error associated with the gap energy. Using the values in the table this error was evaluated to be $ \SI{1.657e-21}{\joule} = \SI{0.010}{\electronvolt} $.
+
+Our measurement of the gap energy, $ E_g = \SI{1.058 \pm 0.010}{\electronvolt} $, is consistent with the standard range of expected values, \SIrange{0.9}{1.2}{\electronvolt}. To obtain a more accurate prediction for the gap energy the purity of the silicon sample would need to be taken into account however that was not considered in this experiment.
+
+\subsection{Errors}
+There were several sources of possible systematic error that were considered. In order for the thermocouple to give an accurate reading the temperature of the reference junction must be controlled and constant. This was achieved by using an ice bath to provide a constant temperature of \SI{0}{\celsius} and water to provide a good thermal conductor. The voltage of the thermocouple was measure to three significant figures however the conversion table \cite{kayelaby} uses four. This introduced a slight rounding error on occasions however since the temperatures were only given to whole degrees kelvin (also with three significant figures) this is not likely to have a large effect on the calculated value of the gradient.
+
+The use of the voltmeters also introduces a potential source of systematic error however upon analysis this effect is insignificant since the value of the fixed resistor is \SI{1.20}{\kilo\ohm} and the resistance of the voltmeters is \SI{10}{\mega\ohm}. Equation C3.2 in \cite{labmanual} reduces to C3.1 since the voltmeters' resistances are orders of magnitude greater. The error this introduces is minimal considering that the voltmeter readings themselves are only accurate to 1 part in 1000.
+
+\subsection{Improvements to the experiment}
+As already mentioned the experiment would be improved if the purity of the silicon sample could be accounted for in the reference value of the gap energy. It would also be interesting to test how silicon's conductivity behaves over a greater range of temperatures than those tested in this experiment, possibly to below \SI{0}{\celsius} or even down to absolute zero.
+
+\section{Conclusion}
+A small sample of silicon in the form of a thermistor was used to study the variation in resistance with respect to temperature. This was effected by the measurement of three voltages. The variation of resistance with respect to temperature of the silicon was as predicted by the non-classical theory.
+
+The data obtained were then used to deduce a value for the gap energy of the silicon sample with no further measurements and reference only to the Boltzmann constant. The value obtained for the gap energy was \SI{1.058 \pm 0.010}{\electronvolt} -- consistent with the reference range \SIrange{0.9}{1.2}{\electronvolt}.
+
+\bibliographystyle{abbrv}
+\bibliography{references}
+
+\end{document}

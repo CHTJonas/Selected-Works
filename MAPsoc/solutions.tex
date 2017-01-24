@@ -1,0 +1,129 @@
+\documentclass[12pt]{article}
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath}
+\usepackage{graphicx}
+\usepackage[hidelinks=true]{hyperref}
+\title{Solution to MAPsoc Problems}
+\author{Charlie Jonas\\ \href{mailto:jonasc005257@tbshs.org}{jonasc005257@tbshs.org}}
+\date{December 5, 2014}
+\begin{document}
+
+\maketitle
+
+\noindent
+\textbf{Question 1:} Given that $ \log_2 (9) = x $, express $ \log_3 (8) $ in terms of $ x $.\\
+
+\noindent
+This short proof requires nothing more that perseverance, intuition and an innate familiarity with the rules of logarithms.\\
+
+\noindent
+To begin with, we note that
+\begin{align}
+2^{x} = 9 = 3^2.
+\end{align}
+Taking a base-3 logarithm of both sides yields the equation
+\begin{align}
+\log_3 (2^{x}) = x\log_3 (2) = 2
+\end{align}
+and dividing through by $ x $ gives
+\begin{align}
+\log_3 (2) = \frac{2}{x}.
+\end{align}
+We want $ \log_3 (8) $ so we need to multiply both sides of the equation by 3 since $ 8 = 2^{3} $. This would leave us with
+\begin{align}
+3\log_3 (2) = \frac{6}{x}
+\end{align}
+which is equivalent to
+\begin{align}
+\log_3 (2^{3}) = \log_3 (8) = \frac{6}{x}.
+\end{align}
+Hence $ \log_3 (8) $ expressed in terms of $ x $ is $ \frac{6}{x} $ or, more specifically,
+\begin{align}
+\log_3 (8) = \frac{6}{\log_2 (9)}.
+\end{align}
+
+\pagebreak
+
+\noindent
+\textbf{Question 2:} Prove that $ \log_x (-a) = \frac{i\pi}{\ln (x)} + \log_x (a) $.\\
+
+\noindent
+This proof is much more difficult and requires some reasonably advanced calculus. I strongly urge you to read up on calculus and all the log rules as they are crucial to much of higher level mathematics. For those who find this too difficult, you may skip to equation~\eqref{easybit} which you should recognise easily; the first section of the proof sets about proving this results using Taylor series and is included for completeness. You may read up on Taylor series at \url{http://en.wikipedia.org/wiki/Taylor_series} or just note that we can approximate a given function $ f $ about a point $ (a, f(a)) $ by
+\begin{align}
+\sum_{n=0}^{\infty} \left(\frac {f^{(n)}(a)}{n!} \times (x-a)^{n}\right).
+\end{align}\\
+
+\noindent
+To begin we calculate or recall the Taylor series expansions of sine, cosine and the natural exponent
+\begin{align}
+\sin x = \sum^{\infty}_{n=0} \frac{(-1)^n}{(2n+1)!} x^{2n+1} = x - \frac{x^3}{3!} + \frac{x^5}{5!} - \cdots,
+\end{align}
+\begin{align}
+\cos x = \sum^{\infty}_{n=0} \frac{(-1)^n}{(2n)!} x^{2n} = 1 - \frac{x^2}{2!} + \frac{x^4}{4!} - \cdots,
+\end{align}
+\begin{align}
+e^{x} = \sum^{\infty}_{n=0} \frac{x^n}{n!} = 1 + x + \frac{x^2}{2!} + \frac{x^3}{3!} + \cdots.
+\end{align}
+Substituting the above expansion for the natural exponent with $ ix = x\sqrt{-1}$ gives
+\begin{align}
+e^{ix} = 1 + ix - \frac{x^2}{2!} - \frac{ix^3}{3!} + \frac{x^4}{3!} + \frac{ix^5}{5!} + \cdots
+\end{align}
+which, when compared to the series for sine and cosine, simplifies to
+\begin{align}
+e^{ix} = \cos x + i\sin x
+\end{align}
+from which we can obtain Euler's identity
+\begin{align}
+\label{easybit}
+e^{i\pi} = \cos \pi + i\sin \pi = -1.
+\end{align}
+We want $ -a $ so we multiply through by a factor of $ a $
+\begin{align}
+a e^{i\pi} = -a
+\end{align}
+and take a base-$ x $ logarithm of both sides
+\begin{align}
+\log_x (a e^{i\pi}) = \log_x (-a)
+\end{align}
+which simplifies (using the log rules) to
+\begin{align}
+\label{simplify}
+\log_x (a) + \log_x (e^{i\pi}) = \log_x (-a).
+\end{align}\\
+We now need to compute $ \log_x (e^{i\pi}) $ to see if we can simplify the equation above. We therefore recall the definition of the logarithm, defined for some arbitrary numbers $ p $, $ q $ and $ r $
+\begin{align}
+p^{\log_p (r)} = r \\
+q^{\log_q (r)} = r \\
+p^{\log_p (r)} = q^{\log_q (r)}.
+\end{align}
+From this result we can take a base $ q $ logarithm
+\begin{align}
+\log_q (p^{\log_p (r)}) = \log_q (r)
+\end{align}
+and simplify using the power-rule of logarithms
+\begin{align}
+\log_p (r) \times \log_q (p) = \log_q (r).
+\end{align}
+Dividing through by $ \log_q (p) $
+\begin{align}
+\log_p (r) = \frac{\log_q (r)}{\log_q (p)}.
+\end{align}\\
+Since $ p $, $ q $ and $ r $ are all arbitrary numbers we can say that
+\begin{align}
+\log_x (y) = \frac{\ln (y)}{\ln (x)}.
+\end{align}
+and more specifically
+\begin{align}
+\log_x (e^{i\pi}) = \frac{\ln (e^{i\pi})}{\ln (x)}.
+\end{align}
+Now, by taking a natural logarithm of both sides of Euler's identity (equation \eqref{easybit}) and by simplifying equation~\eqref{simplify}, we can see that
+\begin{align}
+\boxed{\log_x (a) + i\frac{\pi}{\ln (x)} = \log_x (-a)}
+\end{align}
+which is the results we needed to prove, arranged in the form $ a+bi $.
+\\\\\\
+
+\noindent
+This document accompanied a presentation to The Bishop's Stortford High School Maths and Physics Society by Charlie Jonas on Friday 5th December 2014 and was typeset by the speaker using \LaTeX .
+
+\end{document}

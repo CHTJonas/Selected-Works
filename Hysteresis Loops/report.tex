@@ -1,0 +1,235 @@
+\documentclass[12pt]{article}
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath}
+\usepackage{graphicx}
+\usepackage{hyperref}
+\usepackage[separate-uncertainty = true]{siunitx}
+\usepackage{float}
+\usepackage{listings}
+\usepackage{color}
+
+\title{Hysteresis Loops}
+\author{Charlie Jonas\\Fitzwilliam College\\CRSid: chtj2}
+\date{December 5, 2016}
+
+\begin{document}
+
+\maketitle
+
+\begin{abstract}
+An integrator suitable for a \SI{50}{\hertz} AC mains signal was constructed and used to integrate the voltage present on the secondary side of a step-up transformer. Mild steel, iron and a Cu/Ni alloy were used as the magnetic core material of the transformer and the measured output voltage used to investigate the intrinsic hysteresis properties of said materials, and to test the theoretical relationship between the $B$ and $H$ magnetic fields.
+\end{abstract}
+
+
+
+
+\section{Introduction}
+The aim of this experiment was to carry out research into the effects of hysteresis and how different transformer magnetic core materials behave under the magnetic field induced in them by the primary and secondary inductors. The study of this is important in the design of transformers in order to optimise energy losses due to ohmic heating, eddy currents and hysteresis within the core.
+
+Fundamentally, a ferromagnetic material can be thought of as consisting of many small atomic dipoles which tend to align themselves in the presence of an externally-applied magnetic field. When this field is removed, there is still some residual alignment that remains and this gives rise to the materials permanent magnetisation. Demagnetising the material requires applying an opposing magnetic field, heating the material to its Curie temperature or, to a lesser degree, repeatedly hammering the material.
+
+In our experiment we use this property of hysteresis to numerically calculate a value for the energy loss per unit volume per cycle of the current around the turns in the inductor in the transformer. We plot the hysteresis curves for three different materials: mild steel, so-called 'transformer' iron and a Cu/Ni alloy, and use them to calculate a value for the relative permittivity of the material.
+
+The background to the theory is detailed in the next section. Section 3 contains a statement on the experimental method whilst the results themselves can be found in section 4. A discussion of these is in section 5 and the overall conclusion, section 6.
+
+
+
+
+\section{Theoretical Background}
+A current passing through the primary coils of the transformer can be modelled as being a long air-cored solenoid that produces an magnetising field, thereby inducing a magnetic field in the core material which in turn links flux into the secondary coils, thereby inducing a current in them. If a current $I$ flows through $n_p$ turns on the primary coil, occupying a length $L_p$ the the magnetising field is \cite{labmanual}
+\begin{equation}
+H = In_p / L_p.
+\end{equation}
+The most accurate way to measure $I$ is by passing it through a resistance $R_1$ and measuring the voltage across this resistance $V_x$
+\begin{equation}
+V_x = IR_1 = \frac{L_p R_1}{n_p}H.
+\end{equation}
+Faraday's Law states that the varying current, and therefore varying magnetic field, will induce an EMF in the secondary transformer coil given by \cite{feynman2}
+\begin{equation}
+\epsilon = n_s A_s \frac{\partial B}{\partial t}
+\end{equation}
+where $B$ is the magnetic flux density, $n_s$ is the total number of turns in the secondary coil and $A_s$ is its cross-sectional area. Trivially
+\begin{equation}
+\int \epsilon \cdot dt = n_s A_s B
+\end{equation}
+which means that if we integrate the EMF induced at the secondary coil (using an appropriate integrator circuit for the 50 Hz AC UK mains supply) then we will be able to determine the magnetic field $B$. We expect the magnetic field $B$ to be proportional to the magnetising field $H$ by $B = \mu_0 \mu_r H$.
+
+Returning to our theory, we can now deduce that
+\begin{equation}
+V_y = \frac{n_s A_s}{R_2 C} B
+\end{equation}
+where $R_2$ is the input resistance of the integrator, $C$ is the capacitance of the feedback loop and $V_y$ is the voltage measured at the output of the integrator circuit. Since $B \propto H$ we deduce that $V_y \propto V_x$.
+
+This is at least what we might expect if $B = \mu _0 \mu _r H$ however we will investigate to what degree our materials agree with this experimentally; ferromagnets usually have a more complex relationship. \cite{tilley2005}
+
+
+
+
+\section{Method}
+\subsection{Setting up the apparatus}
+Firstly, a integrator circuit was constructed and its performance tested around \SI{50}{\hertz}. We opted for an input impedence $R_1 = \SI{10}{\kilo\ohm}$.
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.6\textwidth]{PracticalIntegratorCircuit.png}
+\caption{A practical integrator circuit. The \SI{1}{\mega\ohm} resistor has been included in parallel with the \SI{1}{\micro\farad} capacitor since any initial charge on the capacitor would cause the input to increase as the capacitor charge increased until the OPAMP became saturated. The overall gain of this circuit, after integration, can be shown to be $1/R_1 C$.}
+\label{PracticalIntegrator}
+\end{figure}
+For our signal capture and measurement we used a PicoScope digital oscilloscope with two X10 probes attached; the probes were calibrated at the beginning of each laboratory session using a \SI{1}{\kilo\hertz} square wave, generated from a signal generator. We determined that DC coupling was the best choice since the high-pass filter that is applied during AC coupling led to a reduction in amplitude and a change of phase when applied to an input signal around and below \SI{50}{\hertz}.
+
+The entire circuit was then constructed by connecting the integrator circuit to the secondary coil, of 500 turns, and the shunt resistor, of \SI{2.2}{\ohm}, to the primary coil, of 400 turns.
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.6\textwidth]{CompleteSystem.png}
+\caption{The complete system. The integrator circuit connected to the secondary coil is shown on the right whilst the shunt resistor connected to the primary coil is shown on the left. The AC voltage source and measuring points $V_x$ and $V_y$ are also indicated.}
+\label{CompleteSystem}
+\end{figure}
+
+\subsection{Checking the experiment}
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.9\textwidth]{IntegratorTesting.png}
+\caption{The output response of the integrator given a \SI{50}{\hertz} square wave input. The performance of the integrator was verified by this method and the expected triangle wave output was observed. We therefore considered this suitable for our experiment.}
+\label{IntegratorTesting}
+\end{figure}
+In order to make accurate predictions based on our model we first checked that our experimental setup performed as we expected using a magnetic core material with a known relationship between $B$ and $H$ -- air.
+
+It can be shown that
+\begin{equation}
+V_y = \frac{n_s A_s \mu_0 \mu_r n_p}{R_2 C L_p R_1} V_x
+\end{equation}
+which would suggest a straight line graph with a gradient of $\frac{n_s A_s \mu_0 n_p}{R_2 C L_p R_1}$ where we have assumed air to have $\mu_r = 1$. To test this we measured the various experimental parameters and calculated that the constant of proportionality should be $\SI{8.4 \pm 0.3 e-3}{\text{no units}}$. We then plotted a graph of $V_y$ against $V_x$ and calculated the gradient using linear regression on the data set.
+\begin{figure}[H]
+\centering
+\includegraphics[width=1.0\textwidth]{AirHysteresisPlot.png}
+\caption{Hysteresis plot for the system with an air core. The exact value for the line gradient was calculated using linear regression and found to be $\SI{7.63 \pm 0.02 e-3}{}$. This would tend to disagree with our theoretical value of $\SI{8.4 \pm 0.3 e-3}{}$ however we believe that this difference can be attributed to systematic error arising from heating in the resistor and the integrator not having ideal gain (see the later section on errors).}
+\label{AitHysteresisPlot}
+\end{figure}
+
+We concluded overall that although our values for the constant of proportionality in the case of an air core disagreed, the experimental setup was still valid. We waited a while before continuing to try and ensure that the resistor had reached a state of thermal equilibrium.
+
+\subsection{Performing the experiment}
+
+Three different core materials were investigated to determine the properties of their hysteresis: mild steel, transformer iron and Cu/Ni alloy. By plotting a graph of $B$ against $H$ and integrating the area enclosed by the region on the graph we determined the energy loss per unit volume per cycle around a loop. We also estimated a range of allowed relative permittivities $\mu_r$ based on the steepest and shallowest parts of the mild steel and transformer iron graphs. For the Cu/Ni allow we made measurements of the hysteresis properties above and below \SI{40}{\celsius} as we had reason to suspect there would be a change around that temperature point. \cite{labmanual}
+
+In order to do the integration we calculated constants to convert from $V_x$ and $V_y$ to $H$ and $B$ respectively. We then imported the data from the PicoScope into MATLAB where we scaled it appropriately using these constants and then plotted it, using the polyarea function to perform the numeric integration step.
+
+
+
+
+\section{Results}
+A summary of the data collected is provided by the graphs in figures \ref{MildSteelHysteresisPlot}, \ref{TransformerIronHysteresisPlot}, \ref{CuNiAboveHysteresisPlot} \& \ref{CuNiBelowHysteresisPlot} whilst a summary of measured and derived quantities is provided by table \ref{measurementTable}. The raw data as recorded from the PicoScope system, which has not been included due to the volume of data, is freely available from the authors in a CSV file format.
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.6\textwidth]{MildSteelHysteresisPlot.png}
+\caption{Hysteresis plot of $B$ against $H$ for a core sample of mild steel.}
+\label{MildSteelHysteresisPlot}
+\end{figure}
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.6\textwidth]{TransformerIronHysteresisPlot.png}
+\caption{Hysteresis plot of $B$ against $H$ for a core sample of transformer iron.}
+\label{TransformerIronHysteresisPlot}
+\end{figure}
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.6\textwidth]{CuNiAboveHysteresisPlot.png}
+\caption{Hysteresis plot of $B$ against $H$ for a core sample of Cu/Ni Alloy above \SI{40}{\celsius}.}
+\label{CuNiAboveHysteresisPlot}
+\end{figure}
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.6\textwidth]{CuNiBelowHysteresisPlot.png}
+\caption{Hysteresis plot of $B$ against $H$ for a core sample of Cu/Ni Alloy below \SI{40}{\celsius}.}
+\label{CuNiBelowHysteresisPlot}
+\end{figure}
+
+\begin{table}[H]
+\centering
+\begin{tabular}{| p{2cm} | p{4cm} | p{4cm} | p{4cm} |}
+\hline
+Quantity & Measurement & Error & 1/fractional error \\ \hline
+$L_p$ & $\SI{4.3}{\centi\metre}$ & $\SI{0.1}{\centi\metre}$ & $\sim\SI{43}{\per\centi\metre}$ \\ \hline
+$(A_s)_\text{steel}$ & $\SI{5.15e-5}{\metre\squared}$ & $\SI{0.01e-5}{\metre\squared}$ & $\sim\SI{515}{\per\metre\squared}$ \\ \hline
+$(A_s)_\text{iron}$ & $\SI{2.5e-6}{\metre\squared}$ & $\SI{0.6e-6}{\metre\squared}$ & $\sim\SI{4}{\per\metre\squared}$ \\ \hline
+$(A_s)_\text{Cu/Ni}$ & $\SI{1.960e-5}{\metre\squared}$ & $\SI{0.005e-5}{\metre\squared}$ & $\sim\SI{392}{\per\metre\squared}$ \\ \hline
+$R_1$ & $\SI{3.6}{\ohm}$ & $\SI{0.1}{\ohm}$ & $\sim\SI{36}{\per\ohm}$ \\ \hline
+$H/V_x$ & $\SI{2584}{\ampere\per\metre\per\volt}$ & $\SI{90}{\ampere\per\metre\per\volt}$ & $\sim\SI{29}{\volt\metre\per\ampere}$ \\ \hline
+$(B/V_y)_\text{steel}$ & $\SI{2.557}{\tesla\per\volt}$ & $\SI{0.005}{\tesla\per\volt}$ & $\sim\SI{511}{\volt\per\tesla}$ \\ \hline
+$(B/V_y)_\text{iron}$ & $\SI{8.00}{\tesla\per\volt}$ & $\SI{1.92}{\tesla\per\volt}$ & $\sim\SI{4}{\volt\per\tesla}$ \\ \hline
+$(B/V_y)_\text{Cu/Ni}$ & $\SI{1.020}{\tesla\per\volt}$ & $\SI{0.003}{\tesla\per\volt}$ & $\sim\SI{340}{\volt\per\tesla}$ \\ \hline
+\end{tabular}
+\caption{Summary of measured and calculated quantities with errors.}
+\label{measurementTable}
+\end{table}
+
+
+
+
+\section{Discussion}
+\subsection{Analysis of graphs}
+Figure \ref{MildSteelHysteresisPlot} shows that the mild steel sample does exhibit a hysteresis effect characterised by the evident loop. The graph shows that increasing or decreasing the $H$ field produces a reasonably linear response in the $B$ field until such a point as the material starts to become saturated. Once saturated, and when the $H$ field dies to zero, there is still a residual magnetic field in the sample, called the saturation remanence. To overcome this residual field and remove any magnetism from the material, an $H$ field must be reapplied in the opposite direction (as predicted by theory); this is the coercivity.
+
+Using numerical integration we calculated the area enclosed within the $B$-$H$ curves $\int_\text{steel} H dB = \SI{63 \pm 2}{\kilo\joule\per\metre\cubed\per\text{loop}}$. We also calculated the steepest and shallowest parts of the graph and used these measurements to approximate maximum and minimum values for the permittivity. Using two points on the steep section of the graph, $(1435, 0.9474)$ and $(-10250, -1.875)$,
+\begin{equation}
+\text{Maximum } \mu_r = \frac{1}{\mu_0}\left(\frac{0.9474--1.875}{1435--10250}\right) = 192
+\end{equation}
+and similarly
+\begin{equation}
+\text{Minimum } \mu_r = \frac{1}{\mu_0}\left(\frac{-1.915--2.278}{-2870--14560}\right) = 24.7
+\end{equation}
+that is to say $25 \leq \mu_r \leq 190$ for mild steel.
+
+The sample tested next was transformer iron and the results are shown in figure \ref{TransformerIronHysteresisPlot.png}. The iron showed hysteresis similar to the steel however the range of $B$ values was greater and the range of $H$ values, smaller. This shows that the transformer iron is a better ferromagnetic magnetic material than steel since a smaller $H$ field can induce a much larger $B$ field. The value calculated for the integral area was $\int_\text{iron} H dB = \SI{110 \pm 30}{\kilo\joule\per\metre\cubed\per\text{loop}}$ which gives the energy loss per loop per unit volume. Compared to the steel this is a much higher value and is probably caused by the iron having a lower resistivity and so a larger current flowing through the coils, dissipating more heat. We again calculated
+\begin{equation}
+\text{Maximum } \mu_r = \frac{1}{\mu_0}\left(\frac{-0.2539--2.413}{2870--410.1}\right) = 524
+\end{equation}
+\begin{equation}
+\text{Minimum } \mu_r = \frac{1}{\mu_0}\left(\frac{-2.667--3.301}{-1230--13740}\right) = 40.3
+\end{equation}
+which confirms our assertion that the iron is a better ferromagnet than the steel.
+
+In the case of the copper-nickel alloy, a new property was observed as shown by figures \ref{CuNiAboveHysteresisPlot} and \ref{CuNiBelowHysteresisPlot}. Here a temperature above \SI{40}{\celsius} produced no discernible hysteresis curve whereas cooling the sample to below \SI{40}{\celsius} produced a noticeable loop. We believe this is related to the Curie point; that is heating a material has the effect of randomising the internal dipoles and removing any magnetic fields. Under chilled conditions we found that $\int_\text{Cu/Ni} H dB = \SI{5.4 \pm 0.22}{\kilo\joule\per\metre\cubed\per\text{loop}}$. We decided that since only a small change was observed taking the temperature down from above \SI{40}{\celsius} to near \SI{0}{\celsius}, the apparatus would not be very good at measuring changes that occur in hysteresis over a small temperature range. If such a temperature range were to be examined it would likely produce a very small change in hysteresis which would be lost in the noise of our experiment.
+
+
+
+
+\subsection{Errors}
+We have already spoken about possible systematic errors arising from ohmic heating in the series resistor and the integrator not quite having the ideal gain that is predicted by the circuit theory. The heating of $R_1$ will cause its resistance to increase and so decrease the real-world value for the constant of proportionality between $V_y$ and $V_x$ and give the graph a shallower slope than expected. This is what we first observed when testing our experimental setup against a theoretical prediction for an air core. A smaller realistic integrator gain than the ideal theoretical value will also decrease the real-world graph slope due to energy losses and inefficiencies within the system however this is likely to be a smaller effect than ohmic heating and so may compound, rather than cause, the main extent of the error.
+
+Other than that, our error was subject to a large amount of random noise. There was likely a lot of interference caused by using a dirty power supply (we noted that turning the desk light on and off produced a noticeable change on the PicoScope display) and induction of stray magnetic fields in the lab environment. Our experiment only analysed a recording of measurements taken once so a better approach would be to average data over a set of recordings on the PicoScope to try and reduce background noise present.
+
+
+
+
+\subsection{Improvements to the experiment}
+Improving the experiment would have to focus on reducing noise and increasing the range of values taken on by $B$ and $H$. Screening the apparatus to protect it from external fields would help whilst using a greater number of coils in the primary solenoid of the transformer would serve to increase $H$. Increasing the number of secondary coils would have a similar effect on $B$.
+
+In our experiment we found we were often pushed for time and had to make measurements quickly however a slower approach would have allowed the entire system to reach a thermal equilibrium and therefore to maintain a constant resistance. Decreasing the current would also solve this problem however this would then result in a decrease in $H$ as well. The same can be said about shortening the length of the primary coil.
+
+\section{Conclusion}
+An integrator was setup and its suitable performance at \SI{50}{\hertz} was confirmed. A 4:5 step-up transformer was constructed and different materials were inserted inside the solenoids as the magnetic core. Mild steel was found to have a relative permittivity $25 \leq \mu_r \leq 190$ whilst the transformer iron had $40.3 \leq \mu_r \leq 524$. The copper/nickel alloy did not show ferromagnetic behaviour above \SI{40}{\celsius} however upon cooling to around \SI{0}{\celsius} we found that the ferromagnetic behaviour returned.
+
+The transformer iron had the largest energy loss of \SI{110 \pm 30}{\kilo\joule\per\metre\cubed\per\text{loop}}, followed by the steel at \SI{63 \pm 2}{\kilo\joule\per\metre\cubed\per\text{loop}} and then by the Cu/Ni alloy at \SI{5.4 \pm 0.22}{\kilo\joule\per\metre\cubed\per\text{loop}} in the cold-temperature case.
+
+
+
+
+\bibliographystyle{abbrv}
+\bibliography{references}
+
+\section{Appendix}
+The MATLAB function used to plot and integrate the various hysteresis graphs was coded as below.
+\begin{lstlisting}
+x = data(:,1);
+y = data (:,2);
+plot(x,y);
+xlabel('B/momr')
+ylabel('B')
+polyarea(x,y)
+\end{lstlisting}
+
+\end{document}
