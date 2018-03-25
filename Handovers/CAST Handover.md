@@ -1,15 +1,15 @@
-#CAST 2017 Handover Notes
+# CAST 2017 Handover Notes
 
 So, I've finally managed to get around to doing a proper write up of this handover! What follows is an attempt to list everything you need to care about, as well as some stuff that inevitably you don't.
 
 The broad list of things is as follows:
 
-###General
+### General
 * Each person has half a suitcase for their personal items & effects, and half for tour-related item.
 * Before you leave Cambridge during the August rehearsal period you will want to pack everybody's bags, weight them and photograph them.
 * Make a list of the contents of everyone's bags so that you can immediately identify which bag to put item X in and who's bag that is.
 
-###Indian River Charter High School, Florida
+### Indian River Charter High School, Florida
 * Black box theatre.
 * Stage area is about 7 metres wide, 4 metres deep roughly.
 * Set of double doors leading to an area backstage. These can be removed and fitted with curtains instead. There is also a fire exit door very very downstage right (almost into the audience) which can be used for entrances & exits. The doors at the back used by the audience can also be used for entrances & exits. A combination of all three of these form the get around.
@@ -23,11 +23,11 @@ The broad list of things is as follows:
 * They also have a selection of Windows PCs & laptops and Apple Macs which they're willing to let you use if you ask nicely.
 * Venue contact was the same as the venue tech - guy called Michael Naffziger. He's really nice, friendly and helpful, although for us he was super busy preparing the school for the impending hurricane.
 
-###Sebastian River High School, Florida
+### Sebastian River High School, Florida
 * We didn't visit Seb. River due to hurricane Irma and the evacuation of Florida.
 * We did however get to spend an extra day in a hotel in North Carolina so I guess that was nice...
 
-###Little Washington, Virginia
+### Little Washington, Virginia
 * Small very old theatre in a very small town. Think old movie theatre kind of venue.
 * Hosts are all very wealthy and have very amazing very large houses, often quite a ways away from the theatre down dirt tracks. Might be something to think about RE: the get in/out.
 * Stage is probably about 7 metres wide and maybe 5 metres deep. There are about six large stock white flats that you will probably want to get rid of. We took them outside and put them down on some plastic sheets on the ground.
@@ -40,7 +40,7 @@ The broad list of things is as follows:
 * Sound is just via a jack lead into a tiny digital mixing desk.
 * Venue contact was a lovely lady called Kendra who was an absolute sweetheart. Venue tech was a guy called Hank who is a grumpy old man and a nightmare to deal with. He also gave our Designer, Alice, a massive load of stick about out set being silly and badly constructed and unsafe - probably because he's misogynistic.
 
-###Harrisburg, Pennsylvania
+### Harrisburg, Pennsylvania
 * Typical American high school hall with a flag on the side of the stage (you can remove this but do ask first).
 * Stage is about 8 metres wide and maybe 6 deep.
 * Set of double doors in the downstage left wing which lead to a corridor.
@@ -54,7 +54,7 @@ The broad list of things is as follows:
 * Sound desk is a massive over-the-top Allen & Heath 32 channel analogue console.
 * Venue contact and tech were both friendly and helpful. They will be teaching lessons sometimes during the day so just be aware of that.
 
-###Frostburg, Maryland
+### Frostburg, Maryland
 * Venue is a concert recital hall, strictly speaking, which comes with it's own set of challenges for staging a theatrical production.
 * The stage is massive - we think around 9 metres wide and 10 deep. There is a halfway curtain which you can use to blind the rear half of the stage. Ask them ahead of time if you think you might want this moved further forward or backwards.
 * They have acoustic damping in the form of huge curtains at the back of the hall which can be drawn or opened or left somewhere in-between. You'll probably want to keep them all closed.
@@ -69,7 +69,7 @@ The broad list of things is as follows:
 * Stepladders available.
 * The venue contact is a bit of a nightmare is is extremely patronising. The venue tech was really nice to us however the previous year had massive problems with him. The key is communication - make sure you chat to him and get to know him and be friendly. Keep him in the loop of what you're doing and ask permission before you done something and you should be fine. 
 
-###St. John Fisher, New York
+### St. John Fisher, New York
 * Venue is a large hall with removable single chairs for audience seating.
 * Stage is about 8 metres wide and 6 metres deep.
 * Single door in the upstage left wing which leads to the dressing room. This is actually a catering storage room and they get annoyed if you touch the urns that they keep in there.
@@ -81,12 +81,12 @@ The broad list of things is as follows:
 * LX control is an ETC SmartFade which can of course be switched out for the CAST nomad.
 * Sound is a jack lead straight into a Mackie analogue mixing desk.
 
-###Stratford, Connecticut
+### Stratford, Connecticut
 * Stratford is actually two venues in one.
 * The first venue is inside a local High School.
 * The second is outside in the middle of a car park next to an abandoned theatre.
 
-####Inside (High School)
+#### Inside (High School)
 * On our tour the way things worked out meant that our get in happened at 11pm.
 * The stage is about 8 metres wide and 6 metres deep, although the wings are filled with junk.
 * Lighting bars above stage and one single bar in front of the stage.
@@ -95,7 +95,7 @@ The broad list of things is as follows:
 * LX control is via a lighting desk at the back of the auditorium. It's inbuilt into a wooden desk thing. I don't recall being able to use our own control in this venue.
 * Sound was setup via a speaker at the side of stage. The equipment for this was stored in a security cage stage right.
 
-####Outside
+#### Outside
 * The outside venue is in a car park against a small shack and a few trees.
 * There is a nearby house (about 200 metres away) which acts as the offices for the Mighty Quinn Foundation, a local drama group.
 * In the house's basement is where they store all of the technical equipment. There are a variety of floodlights and parcans and such. You will probably want to load them into the boots of your cars and then drive from the house to the 'stage'.
@@ -106,7 +106,7 @@ The broad list of things is as follows:
 __Note on the abandoned theatre:__
 The abandoned theatre was once fully operational but ceased due to (I believe) bankruptcy. As a result it was largely abandoned overnight and left in the exact state. The outsides are boarded up however the insides are almost identical to when it was abandoned and it's very dangerous. The scenery on the hemps and counterweights has fallen all over the stage and could, for example, fall on you if you were to go inside. I recall that we had to enter the building in order to switch on the power to the outlets on the outside. If you do this you will want to take a party of three people inside, one to stay with someone if they get injured and one to go and get help. You will also want to tell people outside that you're going into the theatre. My general advice is to _stay away if possible_.
 
-###Grand Cayman
+### Grand Cayman
 * The hotel is amazing! As is the food & drink.
 * Venue is a small-ish community theatre on the island.
 * Lighting is a variety of Source Four Profiles and ParNels.
