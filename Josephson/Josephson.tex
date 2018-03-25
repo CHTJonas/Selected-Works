@@ -1,0 +1,211 @@
+\documentclass[11pt]{article}
+%\documentclass{article}
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath}
+\usepackage{graphicx}
+\usepackage{hyperref}
+\usepackage[separate-uncertainty = true]{siunitx}
+\DeclareSIUnit{\dBm}{dBm}
+\usepackage{float}
+\usepackage{wrapfig}
+\usepackage{listings}
+\usepackage{color}
+
+\title{E2b: Measurement of $e / h$ using the Josephson Effect}
+\author{Head of Class: Dr. Michael Sutherland}
+\date{February 26, 2018}
+
+\begin{document}
+
+\maketitle
+
+\begin{abstract}
+The I-V curve due to the Josephson effect of two niobium superconductors immersed in a cryostat, separated by an insulating layer of niobium oxide and under the application of 9GHz microwave radiation was examined. The data collected were analysed to accurately determine from the obtained Shapiro steps the fundamental ratio of the electron charge upon Planck's constant.
+\end{abstract}
+
+\tableofcontents
+
+\newpage
+\section{Introduction}
+A superconductor is a material which, due to underlying quantum mechanical phenomena below a certain critical temperature $T_C$, exhibits no electrical resistance and which expels lines of magnetic flux. In most conductors resistivity drops with the cube of the temperature, eventually approaching some finite value near absolute zero due to impurities and defects. In a superconductor the resistivity is seen to drop off to exactly 0 sharply when cooled below it's characteristic critical temperature, which is different for each material.
+
+Normally, an electric current can be thought of as a flow of electrons moving through the ionic lattice of the conductor. The intrinsic resistance of such a material is due to these conduction electrons colliding and scattering off of the lattice ions causing energy to be dissipated as heat, a phenomenon is known as Joule heating.
+
+\begin{wrapfigure}{r}{0.4\textwidth}
+	\includegraphics[width=0.9\linewidth]{cooper-pairs.png}
+	\caption{Diagram comparing the length scale of the electron-photon interaction and the lattice spacing in a typical conductor.}
+	\label{cooperPairs}
+\end{wrapfigure}
+
+Conversely in a superconductor the many individual electrons collapse into a single electron wavefunction $\psi(r)$. In such a material the density of electrons is given by $n_s = \psi^*\psi$ and the current density is $I \sim \Delta\theta n_s e\hbar / m$ \cite{labmanual}.
+
+Cooper \cite{cooper-pairs} showed that fermions in the presence of a weakly attractive potential have the tendency to form a paired state below the Fermi level. In a superconducting material the exchange of a virtual photon between electrons accounts for this potential, and so electrons become bound into so-called Cooper pairs. These coupled electrons can take the character of a boson and condense into the ground state \cite{hyperphysics}. The energy gap below the Fermi energy is typically on the order of $\SI{1}{\milli\electronvolt}$ which is much smaller than the thermal energy at room temperature. Therefore upon cooling to temperatures where $K_B T < \SI{1}{\milli\electronvolt}$ electrons flow without being scattered by the lattice and the material exhibits zero resistivity.
+
+\section{Theoretical background}
+It is known that the quantum tunnelling of Cooper electron pairs can occur between two superconductors that are brought into close proximity, separated by a thing insulating barrier \cite{josephson}. This so-called Josephson effect allows a small but measurable finite current to flow. The magnitude of this current is determined by the sine of the phase difference between the two superconductors and is given by
+\begin{equation}
+	\label{DCjosephson}
+	I=I_C \sin(\theta_B - \theta_B)
+\end{equation}
+where $I_C$ is the critical Josephson current, the current below which flow is entirely dissipationless.
+
+If a fixed voltage is applied across the junction, the phase difference becomes time dependent and hence the current is also seen to vary with time. The rate of change of phase difference is given by
+\begin{equation}
+	\label{ACjosephson}
+	\dot{\theta} = \frac{2eV}{\hbar}
+\end{equation}
+which can be solved as a differential equation to yield the phase- and current-relations for the AC Josephson effect
+\begin{equation}
+	\label{ACjosephsonPhase}
+	\theta = \theta_0 + \frac{2eVt}{\hbar}
+\end{equation}
+\begin{equation}
+	\label{ACjosephsonCurrent}
+	\begin{split}
+		I(t) = I_C \sin(\theta_0 + \omega_0 t),
+	\end{split}
+	\quad\quad
+	\begin{split}
+		\omega_0 = \frac{2eV}{\hbar}.
+	\end{split}
+\end{equation}
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=1.0\textwidth]{IV-curves.png}
+	\caption{I-V curves for the DC Josephson effect for a junction between Left) a normal conductor, Centre) a superconductor and Right) a superconductor with microwave radiation applied.}
+	\label{IV-curves}
+\end{figure}
+
+Application of microwave radiation across a Josephson junction induces a voltage bias $V = V_0 + V_1 \cos(\omega t)$ with both DC and AC components which assists in the tunnelling of Cooper pairs. Differential equation \ref{ACjosephson} can now be solved for the above bias to give
+\begin{equation}
+	\label{MicrowavePhase}
+	\theta = \theta_0 + \frac{2eV_0}{\hbar}t - \frac{2eV_1}{\hbar\omega}\sin(\omega t)
+\end{equation}
+\begin{equation}
+	\label{MicrowaveCurrent}
+	\begin{split}
+		I(t) = I_C \sin(\theta_0 + \omega_0 t - \alpha\sin(\omega t)),
+	\end{split}
+	\quad\quad
+	\begin{split}
+		\omega_0 = \frac{2eV_0}{\hbar},
+	\end{split}
+	\quad\quad
+	\begin{split}
+		\alpha = \frac{2eV_1}{\hbar}.
+	\end{split}
+\end{equation}
+Expanding \ref{MicrowaveCurrent} in terms of the Bessel function gives
+\begin{equation}
+	\label{MicrowaveCurrentBessel}
+	I(t) = I_C \sum_{n=-\infty}^{\infty} (-1)^n J_n \left(\frac{2eV_1}{\hbar\omega_1}\right) \sin(\omega_0 t - n\omega t + \theta_0).
+\end{equation}
+This leads to a DC component of the tunnelling current when $\omega_0 = n\omega$ leading to a visible `stepping' in the I-V curve known as Shapiro steps, when
+\begin{equation}
+	\label{StepVoltage}
+	V_n = \frac{n\hbar \omega}{2e}.
+\end{equation}
+
+The Shapiro steps can be explained in quite simple terms. The steps correspond to the absorption or emission of photons from or to the microwave field, causing pairs to tunnel across the gap. This occurs when the energy difference to cross the oxide layer barrier is a multiple of $\hbar \omega$ \cite{clarke}.
+
+\section{Method}
+\subsection{Setting up the apparatus}
+The basic experimental setup consisted of a TG315 signal generator, an oscilloscope, two Fylde amplifiers and a probe with a niobium tip. The signal generator was used to supply a small current to the input of the probe whilst the voltage across the junction was measured, with both of these signals being amplified to a suitable level to drive the oscilloscope trace. The probe itself consisted of a small niobium plate on a movable pole which allowed it to be rotated and repositioned to obtain an adequate junction between the niobium tip, which was fixed at the bottom. A thin insulating layer on the tip was achieved by simply leaving the tip to oxidise, either overnight or for ten to fifteen minutes on a conventional hot plate. The probe assembly was cooled below $T_C$ via a cryostat consisting of a liquid helium dewar.
+
+Microwaves were supplied to the probe assembly by a Gunn diode connected to a short waveguide assembly, passing through a short piece of detachable coaxial cable to reach the probe. The waveguide cavity consisted of two attenuators used to make coarse and fine adjustments to the microwave intensity passing into the probe. The calibration of these was tested using a digital microwave frequency/power measuring device with an associated $\SI{20}{\decibel}$ attenuator, which was also calibrated.
+
+The niobium tips were manufactured starting with a short cut of niobium wire which was then ground on an emery wheel a short distance away from the working laboratory area. The quality of the tips was found to be very much influential on the quality of the results obtained. Tips needed to be sharp and narrow enough so that they only formed single Josephson junctions on contact, but not so sharp that they immediately bent or deformed when pushed into contact with the niobium plate inside the probe. The tips themselves were secured in a small brass housing at the end of the probe. In order to maximise exposure to microwave radiation a tip needs to be placed at an antinode of the standing wave setup down the probe assembly. The frequency of the microwave source was determined to be approximately \SI{9.472}{\giga\hertz} which gives $\lambda/4 \approx \SI{7.92}{\milli\metre}$ i.e. that the tips need to be positioned such that they are just short of eight millimetres above the surface of the brass mounting.
+
+The oscilloscope setup consisted of a Picoscope connected in addition to a standard analogue CRT oscilloscope. The Picoscope was used to log data on a connected laptop computer for later analysis. Both oscilloscopes were setup with DC coupling in so-called XY mode, where the current through the junction Y was plotted against the voltage across the junction X.
+
+\subsection{Checking the experiment}
+\subsubsection{Calibrating the waveguide attenuators}
+The \SI{20}{\decibel} attenuator was also calibrated and was found to have a value of \SI{21.6 \pm 0.4}{\decibel}. This was used to derive a relationship between the position of the fine attenuator on the microwave waveguide and the power of the delivered microwaves. This relationship is shown in Figure \ref{microwaveCalibration}.
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.9\textwidth]{microwaveCalibration.png}
+	\caption{Graph of the microwave power in decibels relative to one milliwatt plotted against the position of the waveguide attenuator screw guage micrometer.}
+	\label{microwaveCalibration}
+\end{figure}
+
+\subsubsection{Calibrating the amplifiers}
+The two Fylde amplifier were then calibrated against a known fixed voltage source connected to two nine volt batteries in series. This fixed voltage source, shown in Figure \ref{fixedVoltageSource}, was initially calibrated itself on the first day of the experiment by measuring the voltage present at the test posts and then the voltage present at each of the divider posts. This was used to derive a relationship between the input voltage and the voltage at each divider post, since any temperature fluctuation would affect all the resistors and circuitry inside the calibrated source equally and so would cancel out. Each post was then connected to each channel of amplification in turn and used to accurately \& quickly calibrate the amplifier at the start and end of each day (in order to detect and try to account for drift throughout experimentation).
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.9\textwidth]{fixedVoltageSource.png}
+	\caption{Circuit diagram of the fixed voltage source used to calibrate the amplifiers at the beginning and end of each day in the lab.}
+	\label{fixedVoltageSource}
+\end{figure}
+
+Since the calibration procedure involved the (dis)connection of plugs in quick succession there is the potential for heat generated by friction to cause spurious thermoelectric voltages as will be presently discussed below. In order to minimise this, plugs were left for a few tens of seconds to acclimatise to ambient temperature and the Picoscope software was used to collect 100 samples with a small standard deviation.
+
+\subsubsection{Test measurement of a \SI{0.1}{\ohm} resistor}
+The experiment was setup \& connected and a brief experiment was performed in which the I-V curve of a \SI{0.1}{\ohm} resistor was measured. The resistor was setup in `four terminal mode' in place of the Josephson junction so that the accuracy of the voltage measurement was improved. The TG315 was setup to provide a sinusoidal output at just above \SI{20}{\hertz} from its \SI{600}{\ohm} output and the amplifiers \& scopes adjusted to display in sensible ranges. The resistor was measured to have a resistance of \SI{0.1059}{\ohm}
+
+\subsubsection{Reducing thermoelectric voltages}
+Stray thermoelectric voltages can be generated at a junction between two dissimilar metals when there is a difference in temperature. This is known as the Seebeck effect and the spurious voltage generated may be calculated:
+\begin{equation}
+	\label{SeebeckEffect}
+	V = \int_{T_1}^{T_2} (S_B(T) - S_A(T)) dT
+\end{equation}
+where $S_A$ and $S_B$ are the Seebeck coefficients of the two dissimilar metals \cite{labmanual}.
+
+To mitigate against this, all electrical and wiring connections will be made and then left to acclimatise for a few moments to room temperature. This should prevent any heat generated by friction during connection from having an impact on the results.
+
+\subsection{Performing the experiment}
+\subsubsection{Measurement of $e/h$}
+A suitable Josephson junction was obtained and recorded using the Picoscope data capture tools. Microwave radiation was then supplied to the junction and the microwave intensity and signal generator output voltage adjusted until formation of good Shapiro steps was observed. The data were again recorded and saved for later analysis to determine the voltage at which each Shapiro step occurred.
+
+\subsubsection{Investigation into the size of Shapiro steps}
+Earlier analysis showed that the heigh of the n\textsuperscript{th} Shapiro step is proportional to the Bessel function $J_n$. The plan was to investigate this relationship by varying the microwave power $V_1$ with the waveguide attenuators, therefore giving different values of $J_n \left(\frac{2eV_1}{\hbar\omega_1}\right)$ which should give different step heights.
+
+Due to time constraints this part of the experiment was, unfortunately, never realised.
+
+\section{Results}
+In performing the experiment I found it very difficult to obtain accurate reliable data. In fact, observable Shapiro steps that were sufficient to be detected accurately by the Picoscope and logged were only obtained on the last day of experimentation. This complicated analysis somewhat. An example of the trace obtained is shown in Figure \ref{exampleGraph}.
+The scales both read in \SI{}{\milli\volt} as detected by the Picoscope. On the day the amplifier was calibrated and the voltage gain determined to be  \SI{986.286 \pm 0.001} whilst the current gain was determined to be \SI{50.1659 \pm 0.0001}, with the current actually being measured as a voltage across a \SI{9.9751 \pm 0.0001}{\ohm} resistor. The frequency of the microwave radiation was measured to be \SI{9.4719 \pm 0.0001}{\giga\hertz}.
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=1.0\textwidth]{exampleGraph.png}
+	\caption{Example of Shapiro steps obtained at a Josephson junction under application of microwaves on the afternoon of 2017-02-16.}
+	\label{exampleGraph}
+\end{figure}
+
+\section{Discussion}
+\subsection{Analysis of Data}
+The data were analysed using a combination of techniques. The voltages $V_n$ at which each Shapiro step occurred were determined by importing the raw CSV data from Picoscope into Matlab and then running a program to determine the locations of each step. These step locations were then imported into a Microsoft Excel spreadsheet and averaged over 32 similar traces. These step locations were then plotted against $n$ to give a straight line with a gradient of $\hbar\omega_1 / 2e$. This is shown in figure \ref{finalGraph1}
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.9\textwidth]{finalGraph1.png}
+	\caption{The final plot of $V_n$ against $n$ averaged over all steps for all traces. The vertical scale is in units of volts.}
+	\label{finalGraph1}
+\end{figure}
+
+The gradient obtained was \SI{1.6532e-5}{\volt} with a $\pm$ error of \SI{8.84399e-9}{\volt}, best expressed as \SI{16.532 \pm 0.009}{\micro\volt}. This, together with my value for $\omega_1$ gave a value for $e / h$ of \SI{2.8647e14}{\ampere\per\joule}.
+
+\subsection{Errors}
+The literature values for the elementary charge and Planck constant are \SI{1.6021766208e-19}{\coulomb} and \SI{6.626070040e-34}{\joule\second} respectively \cite{charge}\cite{planck}. This gives a literature value for $e/h \approx \SI{2.417989e14}{\ampere\per\joule}$. There is a fifteen percent discrepancy between my value for $e/h$ and that of the literature. Clearly there is problem and the results of this experiment cannot even remotely be viewed as reliable or accurate.
+
+I believe that the primary reason for the discrepancy between values for $e/h$ is due to the poor quality of the Shapiro steps obtained. As previously mentioned the only time that I could form stable Shapiro steps for long enough and with enough height to be measured was on the afternoon of the final day of experimentation. This meant that I was very pushed with regards to time in order to capture enough data to have something to analyse. Comparing the height and scale of my steps to others in the lab showed me that others were able to obtain a greater number of steps in closer proximity and with a much more defined vertical profile. I believe that this is crucial; there is some significant error in the algorithm used to identify the voltage $V_n$ at which each step occurs. The slope of each step is so shallow that where on it's elongated profile do you measure on the x-axis? I believe this is the main source of error in my experiment.
+
+Measures were taken to prevent friction heating or changes in the ambient room temperature from affecting connections and forming stray thermoelectric voltages. Comparing and discussing with others in the laboratory it was determined that this was not influencing general results greatly and so I do not believe this to be a large factor. Equally the calibration of the amplifiers was carried out accurately and the exact resistance of the \SI{10}{\ohm} resistor used to measure the current through the junction was determined using a 4-point measurement. 
+
+One potential area for error that I have identified is the construction and quality of the tip itself. I spent many hours grinding tips and returning to the lab to test them in the probe with little success. I could often form a sufficient Josephson junction however Shapiro steps were never observed upon application of microwaves; increasing the intensity by opening the attenuators simply reduced the step heights to zero. I tried to track down the precise nature of this error by formulating tips the were both narrow \& sharp and wide \& blunt, leaving some to oxidise overnight and some to oxidise for a variety of times on the hot plate. This seemingly had little effect and the majority of the time no junction formed, and the times that one did form, Shapiro steps were never observed until the final afternoon.
+
+There were some additional problems with the circuitry in my probe too. This was mitigated by switching to a second different probe midway through the experiment. This had no direct affect on the data (as they were not collected until the final day), however it may be possible that my experimental methods that were adapted for my first probe, which may have led to slight problems with my second probe. I doubt that this had much of an impact as I had plenty of time to readjust my tip-making technique.
+
+\subsection{Improvements to the experiment}
+There were a number of experimental methodological improvements that could, in hindsight, have been made. One particular improvement would be to calibrate the gain of each amplifier by feeding it with an output from the signal generator and then feeding the same output into one input of the Picoscope and the amplified output into the other, using the onboard software to compute the gain of the entire system. I believe this would have been much more accurate than my method of using the fixed voltage source which fundamentally had a drift and some uncertainty due to the battery and due to temperature fluctuations, despite my attempts to reduce these errors.
+
+I also believe that a general extension in experimentation time would also have been effective as it would have allowed me to continue collecting data. In an ideal world I would have liked to have tried to perform the experiment at a different location in the laboratory with an entirely new set of equipment and a different prob and cryostat to see if that helped me to obtain a better and more consistent set of Shapiro steps. My running out of time is also the reason why the planned second part of the experiment to measure the effect of the power of the microwaves on the height of the steps was never carried out. I was however able to observe by eye that increasing the intensity of the radiation did reduce the step height, confirming that at least parts of the theory on step height are correct.
+
+\section{Conclusion}
+A Josephson junction was setup between a small niobium plate and a tip made of niobium wire, separated by an insulating layer of niobium oxide. The junction was cooled below the critical temperature for niobium and superconducting electrons tunnelled across the oxide barrier. Shapiro steps were observed under the application of microwaves and the voltage at which they form was recorded. The data obtained were then used to calculate the ratio of the elementary charge to the Planck constant and the value obtained was \SI{2.8647e14}{\ampere\per\joule}. This value, although it disagrees with that in the literature, does confirm the theory behind Josephson junctions and BCS superconductor theory.
+
+\bibliographystyle{abbrv}
+\bibliography{references}
+
+\end{document}

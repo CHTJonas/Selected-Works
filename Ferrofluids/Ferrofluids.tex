@@ -1,0 +1,235 @@
+\documentclass[12pt]{article}
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath}
+\usepackage{chemformula}
+\usepackage{graphicx}
+\usepackage{hyperref}
+\usepackage[separate-uncertainty = true]{siunitx}
+\usepackage{float}
+\usepackage{listings}
+\usepackage{color}
+
+\title{E1b: Ferrofluids}
+\author{Head of Class: Dr Lorenzo di Michele}
+\date{November 13, 2017}
+
+\begin{document}
+
+\maketitle
+
+\begin{abstract}
+A droplet of ferrofluid centred on a surfactant in an optical cell was examined under the influence of an external magnetic field provided by an electromagnet. The behaviour of the droplet in changing from a circular shape to an ellipse was investigated, and its behaviour under stronger magnetic fields inducing the so-called labyrinth effect was also observed and investigated. This was used to experimentally test the theories put forward by Tsebers et al. \cite{ref4} and Rosenweig et al. \cite{ref3}.
+\end{abstract}
+
+\section{Introduction}
+Ferrofluids are a suspension of ferromagnetic particles in a fluidic medium. Typically the particles may be \ch{Fe2O3} and have a size of order $\SI{100}{\angstrom}$, whilst the fluid is a long-chain hydrocarbon. The particles are small enough and mobile enough that they tend to align along lines of an externally applied magnetic field. A ferrofluid thus behaves as a paramagnetic medium with a very large susceptibility, leading to a finite value of the induced magnetisation. Considering the field within the ferrofluid, we have the component from the applied external magnetic field and the component due to the alignment of the magnetic dipoles of the particles. These two components oppose each other; the internal field depending on the shape of the ferrofluid droplet and the magnetisation of the ferrofluid, which itself is the result of the applied external field minus the internal demagnetisation field. However the ferrofluid droplet can change its shape in response to its interior magnetic field in order to minimise its free energy. This leads to a range of interesting non-linear, chaotic behaviour - figure \ref{feedbackMechanisms} shows the feedback mechanisms schematically.
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.6\textwidth]{feedbackMechanisms.png}
+\caption{Schematic diagram of magnetic field balance within the ferrofluid. The shape of the droplet will change in order to minimise the internal energy of the system.}
+\label{feedbackMechanisms}
+\end{figure}
+
+\section{Theoretical background}
+When a ferromagnetic material is placed into an external magnetic field whose initial strength is $H_0$ it acquires a magnetisation $M$. For an ellipsoidal body where the internal magnetic field is constant, it can be shown that the $H$ field is then related to this and the coefficient of demagnetisation $D$ by 
+\begin{equation}
+H=H_0-MD
+\end{equation}
+That is to say that the internal field is the external field, minus the opposing field due to the material. If the magnetic field in the material is assumed to behave linearly then $M$ is related to $H$ by the material's magnetic susceptibility
+\begin{equation}
+M=\chi_H H.
+\end{equation}
+This assumption will hold for paramagnetic materials at low field strengths. Simplifying, we obtain 
+\begin{equation}
+M=\frac{\chi_H H_0}{1+\chi_H D}
+\end{equation}
+The magnetic energy per unit volume can be written in terms of $H_0$ as
+\begin{equation} \label{magneticEnergyPerUnitVolume}
+U_m=-\frac{\mu_0}{2}\int_V MH_0 \,dV=-\frac{\mu_0}{2}\int_V \frac{\chi_H H_0^2}{1+\chi_H D} \,dV
+\end{equation}
+It would be helpful to form a construct to compare the magnetic and interfacial energies of the system. This number is the bond number $N_b$
+\begin{equation}
+N_b=\frac{\mu_0 H_0^2 t}{2\gamma}=\frac{B_0^2 t}{2\mu_0 \gamma}
+\end{equation}
+where the interfacial energy $\gamma$ is approximately given by the difference in surface tension between the ferrofluid and the surfactant solution, and $t$ is the plate separation.
+
+\subsection{Stability theory}
+The shape and size of the droplet will be dictated by two main factors:
+\begin{enumerate}
+  \item The interfacial energy - as the droplet changes shape, so the surface tension and interfacial energy increase.
+  \item The magnetic energy - the change in the droplet's shape will cause the demagnetisation coefficient to increase, and thus the quantity in Equation \ref{magneticEnergyPerUnitVolume} will increase.
+\end{enumerate}
+The shape and size of the droplet will change in order to minimise the droplet's overall free energy. So the circular droplet will become elliptical when the energy of the elliptical shape is less than for the circular. And vice versa.
+
+The bond number in this case is given by
+\begin{equation}
+N_B=\frac{1}{9(1-k^2)k}(k^3 +(1-k^2)(8-3k^2)K(k^2)+(7k^2-8)E(k^2))
+\end{equation}
+where $k=\frac{(2R/h)}{\sqrt{1+(2R/h)^2}}$ and $K(k^2)$ \& $E(k^2)$ are the complete elliptical integrals of the first \& second kinds respectively.\cite{ref4}
+
+\subsection{Labyrinth patterns}
+When a stronger external magnetic field is applied, the droplets go beyond simple elliptical distortions and begin to form branching patterns known as labyrinths. At this point the ferrofluid forms a number of long finger-like protrusions from the droplet which branch outwards and for patters due to the interacting fields between each finger. This behaviour is highly chaotic however the relationship between lane/stripe ratio and the bond number is known\cite{ref3} as is given by
+\begin{equation}
+N_B=\frac{\frac{\pi}{\chi^2 z^2}(1+\frac{2\chi}{\pi}[\arctan z + \sum_{n=0}^{N} (\arctan (2za)-\arctan (2zb))])^2}{\frac{1}{1+z^2}+\sum_{n=0}^{N} (\frac{a}{1+(2za)^2} - \frac{b}{1+(2zb)^2})}.
+\end{equation}
+
+\section{Method}
+\subsection{Setting up the apparatus}
+A horizontally-mounted air-gap electromagnet was set up and connected to a current source. An ammeter was wired in series to measure the current through the coils and water was passed through the electromagnet to maintain a constant coil wire temperature. Optical experiment cells with flat glass windows were used to contain the surfactant solution and ferrofluid. The plate separation of each cell was found by subtracting the thickness of the lower window from the distance between the two ledges of the cell itself (which was inscribed on the bottom of each cell).
+
+The surfactant used was Triton X-100 and came in solutions of 0.01\% (surface tension $\SI{36.0\pm0.2}{\milli\newton\per\metre}$), 0.1\% (surface tension $\SI{30.0\pm0.2}{\milli\newton\per\metre}$) and 0.2\% (surface tension unknown but approximated as $\SI{30.0\pm0.2}{\milli\newton\per\metre}$). The ferrofluid used was AGP 513A which had relative magnetic permeability $\mu_r=2.9$ and susceptibility $\chi_H=1.9$. The surface tension of the ferrofluid was $\SI{34}{\milli\newton\per\metre}$
+
+Medical syringes were for filling the cells, inserting ferrofluid drops, and removing excess water, whilst toothpicks were used for lowering the upper plate onto the filled cell. The glass plates and optical cells were cleaned after each and every experiment using distilled water, acetone and ethanol.
+
+A digital camera connected via USB to a laptop was used for data capture purposes.
+
+\subsection{Checking the experiment}
+A Hall probe gaussmeter was used to derive a relationship between the current in the coils and the magnetic field. The field was found to be uniform in the centre of the electromagnet but dropped off towards the outer edges. Special care was therefore taken to ensure that each optical cell was centred in the electromagnet, and that each ferrofluid droplet was as central as possible in the cell.
+\begin{figure}[H]
+\centering
+\includegraphics[width=1.0\textwidth]{magneticCalibration.png}
+\caption{The magnetic field calibration plot. The data were fitted using linear regression and the relationship used in the following experiments.}
+\label{magneticCalibration}
+\end{figure}
+
+Initially a brief experiment was performed in which the overall behaviour of a ferrofluid droplet was observed. A droplet of ferrofluid was added to the centre of a cell with surfactant solution, placed in the magnetic field and observed using the camera. As the field strength was increased the ferrofluid drop began to change shape fingers began to form which invaded the surrounding surfactant. This successfully demonstrated the distortion effect and the labyrinth instability.\cite{labyrinth}
+
+\subsection{Performing the experiment}
+The camera was positioned and calibrated using a optical cell with a plastic slide consisting of concentric rings of $\SI{1}{\milli\metre}$ spacing.
+
+The lower glass plate was sealed to the base of the optical cell using a layer of smeared grease. Surfactant solution was then placed on top of the glass plate and a drop of ferroflusid then added in the centre. The top plate of the optical cell was then lowered down very carefully and excess solution removed from the outer ring as displaced. The cell was then placed in the de-energised electromagnet and the field slowly increased whilst watching through the camera.
+
+\subsubsection{Investigation into stability}
+Optical cells with varying depths and ferrofluid droplets of varying sizes were used to obtain a variety of different theoretical bond numbers. The experimental bond number was then measured at each point and the two different bond numbers plotted against each other to determine correlation.\cite{ref4}
+
+\subsubsection{Investigation into labyrinth patterns}
+Optical cells with very large droplet sizes were used to obtain enough branching for a satisfactory investigation. The field strength was increased until branching occurred and the resulting labyrinths measure at that field strength. The field strength was then further increased and the patterns measured at an increased field intensity repeatedly, as far as was possible. The experimental bond number was calculated using the method in \cite{ref3}.
+
+\section{Results}
+\begin{figure}[H]
+\centering
+\includegraphics[width=1.0\textwidth]{ellipticComparison.png}
+\caption{The data collected for the first investigation into elliptical stability. The bond number determined experimentally at the point of distortion is on the horizontal axis whilst the bond number calculated theoretically \cite{ref4} is on the vertical axis.}
+\label{ellipticComparison}
+\end{figure}
+\begin{figure}[H]
+\centering
+\includegraphics[width=1.0\textwidth]{labyrinthComparison.png}
+\caption{The data collected for the second investigation into labyrinth patterns stability. The bond number determined experimentally is on the horizontal axis whilst the bond number calculated theoretically \cite{ref3} is on the vertical axis.}
+\label{labyrinthComparison}
+\end{figure}
+
+\section{Discussion}
+\subsection{Analysis of graphs}
+Figure \ref{ellipticComparison} shows that the ferrofluid droplets do in general exhibit elliptical distortions as suggested by theory. It was extremely difficult to collect viable data for this experiment hence in part why there is such a spread of data on the chart. An updated graph was produced which omitted some of the outlying data points:
+\begin{figure}[H]
+\centering
+\includegraphics[width=1.0\textwidth]{ellipticComparisonExclude.png}
+\caption{Data from Figure \ref{ellipticComparison} with outliers excluded.}
+\label{ellipticComparisonExclude}
+\end{figure}
+Again there is definitely correlation between the experimentally and theoretically determined values of the bond number, however the correlation is so marginal that the graph passing through the origin make little sense with such a large R-squared value. The measure gradient should be 1 however the gradient is actually $0.019$ which implies that either the theory is vastly wrong, or that the experimental method was fundamentally flawed and the data are unreliable.
+
+The graph obtained from the labyrinth instability experiment is shown in Figure \ref{labyrinthComparison}. It was much easier to collect data for this experiment and the data fit a linear regression much more nicely with an R-squared value of $0.92$. The measured gradient was about $1.5\times10^6$ which is much closer to an expected gradient of exactly $1$.
+
+\subsection{Errors}
+
+The main source of error for the experiment is the method used in determining the value of the interfacial energy. For the experiment this was estimated using the difference between the surface tension of the ferrofluid and the surfactant solution. However this only gives a rough order of magnitude approximation. This will cause the calculated experimental bond number to be incorrect be a numerical factor.
+
+Another source of error in the experiment was the difficulty in setting up a droplet correctly in the optical cells. Due to the use of a newer stock of ferrofluid for the experiment compared to previous experiments, this stock is significantly harder to form droplets with. The ferrofluid tends to want to stick to the upper glass plate and not freely move around the top of the cell as is required by the experiment.
+
+The laboratory workbench area was measured for stray magnetic fields and none were found that were detectable using the Hall probe gaussmeter. However the electromagnet, and to an extent the ferrofluid itself, was also subject to an amount of residual magnetism due to hysteresis. This meant that the field produced by the coils would be of a different strength depending on whether the current was being increased or decreased, and therefore there was some uncertainty in the value of the field strength derived from this current.
+
+\subsection{Improvements to the experiment}
+Improving the experiment would have to focus on improving the performance of the ferrofluid droplets in the optical cells since this was the major factor in causing time delay and error. Enlarging the plate separation using a deeper optical cell helped to an extent, however this tended to lead away from the 2D theory to a 3D reality for which the theories being examined are not valid.
+
+\section{Conclusion}
+Ferrofluid droplets in optical cells were placed in an external magnetic field and the behaviour examined under different field strengths to test the theoretical theories put forward. Good agreement was found between the theory and experiment for labyrinth instability patterns, however very poor agreement was found between the theory and experiment for elliptical instability. This is most likely down to problems in the experimental method than due to an incorrect theory; more work is clearly here needed.
+
+\bibliographystyle{abbrv}
+\bibliography{references}
+
+\newpage
+\section{Appendix}
+The Microsoft Excel macro functions used throughout the data analysis were coded as below. The first function calculates the Complete Elliptic Function of the second kind and is calculated using the method described for the Matlab function ellipke.\cite{maths}
+\begin{lstlisting}[language=VBScript]
+Function EllipticE(m)
+    nmax = 16
+    eps = 0.0000000001
+    If m = 1 Then
+        EllipticE = CVErr(xlErrValue)
+        Else
+        a = 1
+        b = Sqr(1 - m)
+        c = Sqr(m)
+        f = 0.5
+        Sum = f * c * c
+        For n = 1 To nmax
+            t = (a + b) / 2
+            c = (a - b) / 2
+            b = Sqr(a * b)
+            a = t
+            f = f * 2
+            Sum = Sum + f * c * c
+            If c / a < eps Then Exit For
+        Next
+        EllipticE = (0.5 * 3.14159265358 / a) * (1# - Sum)
+        If n >= nmax Then EllipticE = CVErr(xlErrValue)
+    End If
+End Function
+\end{lstlisting}
+\newpage
+The next function coded was the Complete Elliptic Function of the first kind, again using a method of calculation following that for the Matlab function ellipke.\cite{maths}
+\begin{lstlisting}[language=VBScript]
+Function EllipticK(m)
+    nmax = 16
+    eps = 0.0000000001
+    If m = 1 Then
+        EllipticK = CVErr(xlErrValue)
+        Else
+        a = 1
+        b = Sqr(1 - m)
+        c = Sqr(m)
+        f = 0.5
+        Sum = f * c * c
+        For n = 1 To nmax
+            t = (a + b) / 2
+            c = (a - b) / 2
+            b = Sqr(a * b)
+            a = t
+            f = f * 2
+            Sum = Sum + f * c * c
+            If c / a < eps Then Exit For
+        Next
+        EllipticK = 0.5 * 3.14159265358 / a
+        If n >= nmax Then EllipticK = CVErr(xlErrValue)
+    End If
+End Function
+\end{lstlisting}
+\newpage
+This is the Equation 1.8 in Tseber's paper.\cite{ref4}
+\begin{lstlisting}[language=VBScript]
+Function Tsebers(k)
+    Tsebers = (1 / (9 * k * (1 - k ^ 2))) * (k ^ 3 + (1 - k ^ 2) * (8 - 3 * k ^ 2) * EllipticK(k ^ 2) + (7 * k ^ 2 - 8) * EllipticE(k ^ 2))
+End Function
+\end{lstlisting}
+
+This function calculates the Bond number for a labyrinth stripe of particular aspect ratio.
+\begin{lstlisting}[language=VBScript]
+Function rosensweig(chi, z, r, n)
+	Pi = 3.14159265358979
+	If n <> 0 Then
+	    Top = 0
+	    bot = 0
+	    For i = 0 To n
+	        a = (i + 1) * r + i + (3 / 2)
+	        b = (i + 1) * r + i + (1 / 2)
+	        Top = Top + Atn(2 * z * a) - Atn(2 * z * b)
+	        bot = bot + a / (1 + (2 * z * a) ^ 2) - b / (1 + (2 * z * b) ^ 2)
+	    Next
+	End If
+	rosensweig = (Pi / (chi * z) ^ 2) * ((1 + (2 * chi / Pi) * (Atn(z) + Top))) ^ 2 / ((1 + z ^ 2) ^ -1 + bot)
+End Function
+\end{lstlisting}
+
+\end{document}
